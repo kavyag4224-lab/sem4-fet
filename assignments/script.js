@@ -1,3 +1,4 @@
+let interval;
 
 function resetLayers() {
 
@@ -10,7 +11,6 @@ function resetLayers() {
 function showRed() {
 
     resetLayers();
-
     document.getElementById("red").style.zIndex = "3";
 
 }
@@ -18,7 +18,6 @@ function showRed() {
 function showBlue() {
 
     resetLayers();
-
     document.getElementById("blue").style.zIndex = "3";
 
 }
@@ -26,18 +25,18 @@ function showBlue() {
 function showGreen() {
 
     resetLayers();
-
     document.getElementById("green").style.zIndex = "3";
 
 }
 
 function autoSwitch() {
 
-    let layers = ["red", "blue", "green"];
+    clearInterval(interval);
 
+    let layers = ["red", "blue", "green"];
     let i = 0;
 
-    setInterval(function () {
+    interval = setInterval(function () {
 
         resetLayers();
 
@@ -52,15 +51,5 @@ function autoSwitch() {
         }
 
     }, 1000);
-
-    let j = 0;
-
-    do {
-
-        j++;
-
-    }
-
-    while (j < 3);
 
 }
