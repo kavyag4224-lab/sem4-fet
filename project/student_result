@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Management System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #141e30, #243b55);
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 500px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0px 0px 15px black;
+        }
+
+        h2 {
+            color: #00ffd5;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background-color: #00ffd5;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #00c3a5;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        th {
+            background-color: #00ffd5;
+            color: black;
+        }
+
+        td {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Student Result Management System</h2>
+
+        <input type="text" id="name" placeholder="Enter Student Name">
+
+        <input type="number" id="m1" placeholder="Enter Mark 1">
+
+        <input type="number" id="m2" placeholder="Enter Mark 2">
+
+        <input type="number" id="m3" placeholder="Enter Mark 3">
+
+        <button onclick="addStudent()">Add Result</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Total</th>
+                    <th>Average</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+
+            <tbody id="resultTable">
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <script>
+
+        function addStudent() {
+
+            let name = document.getElementById("name").value;
+
+            let m1 = Number(document.getElementById("m1").value);
+
+            let m2 = Number(document.getElementById("m2").value);
+
+            let m3 = Number(document.getElementById("m3").value);
+
+            let total = m1 + m2 + m3;
+
+            let average = total / 3;
+
+            let grade;
+
+            if (average >= 90) {
+                grade = "A";
+            }
+            else if (average >= 75) {
+                grade = "B";
+            }
+            else if (average >= 50) {
+                grade = "C";
+            }
+            else {
+                grade = "Fail";
+            }
+
+            let table = document.getElementById("resultTable");
+
+            let row = table.insertRow();
+
+            row.insertCell(0).innerHTML = name;
+            row.insertCell(1).innerHTML = total;
+            row.insertCell(2).innerHTML = average.toFixed(2);
+            row.insertCell(3).innerHTML = grade;
+
+            document.getElementById("name").value = "";
+            document.getElementById("m1").value = "";
+            document.getElementById("m2").value = "";
+            document.getElementById("m3").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
